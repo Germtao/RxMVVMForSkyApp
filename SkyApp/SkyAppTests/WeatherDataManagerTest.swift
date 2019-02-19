@@ -1,15 +1,15 @@
 //
-//  SkyAppTests.swift
+//  WeatherDataManagerTest.swift
 //  SkyAppTests
 //
-//  Created by TT on 2019/2/18.
+//  Created by TT on 2019/2/19.
 //  Copyright © 2019年 SwifterTT. All rights reserved.
 //
 
 import XCTest
-@testable import SkyApp
+@testable import SkyApp  // 引入项目的main module, 才能在测试用例中，访问到项目定义的类型
 
-class SkyAppTests: XCTestCase {
+class WeatherDataManagerTest: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

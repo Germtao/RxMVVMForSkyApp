@@ -12,12 +12,13 @@
 		71CCE693221AE94600204142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE691221AE94600204142 /* Main.storyboard */; };
 		71CCE695221AE94700204142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE694221AE94700204142 /* Assets.xcassets */; };
 		71CCE698221AE94700204142 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE696221AE94700204142 /* LaunchScreen.storyboard */; };
-		71CCE6A3221AE94800204142 /* SkyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6A2221AE94800204142 /* SkyAppTests.swift */; };
 		71CCE6AE221AE94800204142 /* SkyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6AD221AE94800204142 /* SkyAppUITests.swift */; };
 		71CCE6C1221BD2A600204142 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE6C0221BD2A600204142 /* Default-568h@2x.png */; };
 		71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6C3221BE5CC00204142 /* Configuration.swift */; };
 		71CCE6C7221BE8DB00204142 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6C6221BE8DB00204142 /* Location.swift */; };
 		71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6C8221BEE5B00204142 /* WeatherData.swift */; };
+		71CCE6CC221BEFC200204142 /* WeatherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6CB221BEFC200204142 /* WeatherDataManager.swift */; };
+		71CCE6CE221BF65A00204142 /* WeatherDataManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,6 @@
 		71CCE697221AE94700204142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CCE699221AE94700204142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71CCE69E221AE94800204142 /* SkyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71CCE6A2221AE94800204142 /* SkyAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyAppTests.swift; sourceTree = "<group>"; };
 		71CCE6A4221AE94800204142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71CCE6A9221AE94800204142 /* SkyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCE6AD221AE94800204142 /* SkyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyAppUITests.swift; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		71CCE6C3221BE5CC00204142 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		71CCE6C6221BE8DB00204142 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		71CCE6C8221BEE5B00204142 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		71CCE6CB221BEFC200204142 /* WeatherDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManager.swift; sourceTree = "<group>"; };
+		71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		71CCE68C221AE94600204142 /* SkyApp */ = {
 			isa = PBXGroup;
 			children = (
+				71CCE6CA221BEFB100204142 /* Manager */,
 				71CCE6C5221BE8C900204142 /* Models */,
 				71CCE6C2221BE46500204142 /* Configuration */,
 				71CCE6BB221BD1D400204142 /* Delegates */,
@@ -120,8 +123,8 @@
 		71CCE6A1221AE94800204142 /* SkyAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				71CCE6A2221AE94800204142 /* SkyAppTests.swift */,
 				71CCE6A4221AE94800204142 /* Info.plist */,
+				71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */,
 			);
 			path = SkyAppTests;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				71CCE6C8221BEE5B00204142 /* WeatherData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		71CCE6CA221BEFB100204142 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6CB221BEFC200204142 /* WeatherDataManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 					};
 					71CCE69D221AE94700204142 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = 71CCE689221AE94600204142;
 					};
 					71CCE6A8221AE94800204142 = {
@@ -325,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CCE6CC221BEFC200204142 /* WeatherDataManager.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
 				71CCE690221AE94600204142 /* ViewController.swift in Sources */,
@@ -337,7 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71CCE6A3221AE94800204142 /* SkyAppTests.swift in Sources */,
+				71CCE6CE221BF65A00204142 /* WeatherDataManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +554,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SkyAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -550,6 +564,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SwifterTT.SkyAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkyApp.app/SkyApp";
@@ -561,6 +576,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SkyAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
