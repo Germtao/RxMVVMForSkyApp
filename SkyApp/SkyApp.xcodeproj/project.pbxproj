@@ -100,11 +100,11 @@
 		71CCE68C221AE94600204142 /* SkyApp */ = {
 			isa = PBXGroup;
 			children = (
+				71CCE6BB221BD1D400204142 /* Delegates */,
 				71CCE6BF221BD22C00204142 /* ViewControllers */,
 				71CCE6BE221BD21E00204142 /* SupportFiles */,
 				71CCE6BD221BD1FC00204142 /* Storyboards */,
 				71CCE6BC221BD1E700204142 /* Resources */,
-				71CCE6BB221BD1D400204142 /* Delegates */,
 			);
 			path = SkyApp;
 			sourceTree = "<group>";
