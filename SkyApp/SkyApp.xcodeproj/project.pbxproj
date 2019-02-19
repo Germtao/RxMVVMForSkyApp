@@ -14,6 +14,7 @@
 		71CCE698221AE94700204142 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE696221AE94700204142 /* LaunchScreen.storyboard */; };
 		71CCE6A3221AE94800204142 /* SkyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6A2221AE94800204142 /* SkyAppTests.swift */; };
 		71CCE6AE221AE94800204142 /* SkyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6AD221AE94800204142 /* SkyAppUITests.swift */; };
+		71CCE6C1221BD2A600204142 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE6C0221BD2A600204142 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		71CCE6A9221AE94800204142 /* SkyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCE6AD221AE94800204142 /* SkyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyAppUITests.swift; sourceTree = "<group>"; };
 		71CCE6AF221AE94800204142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71CCE6C0221BD2A600204142 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		71CCE681221AE94600204142 = {
 			isa = PBXGroup;
 			children = (
+				71CCE6C0221BD2A600204142 /* Default-568h@2x.png */,
 				71CCE68C221AE94600204142 /* SkyApp */,
 				71CCE6A1221AE94800204142 /* SkyAppTests */,
 				71CCE6AC221AE94800204142 /* SkyAppUITests */,
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71CCE698221AE94700204142 /* LaunchScreen.storyboard in Resources */,
+				71CCE6C1221BD2A600204142 /* Default-568h@2x.png in Resources */,
 				71CCE695221AE94700204142 /* Assets.xcassets in Resources */,
 				71CCE693221AE94600204142 /* Main.storyboard in Resources */,
 			);
@@ -473,7 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SkyApp/Info.plist;
+				INFOPLIST_FILE = SkyApp/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -491,7 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SkyApp/Info.plist;
+				INFOPLIST_FILE = SkyApp/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
