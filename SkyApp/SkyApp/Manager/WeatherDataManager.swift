@@ -17,12 +17,15 @@ enum WeatherDataError: Error {
 /// 由于该类不会作为其它类的基类
 /// 所以用关键字final修饰 - 可以提高这个对象的访问性能
 final class WeatherDataManager {
-    private let baseURL: URL
-    private init(baseURL: URL) {
+    internal let baseURL: URL
+    internal let urlSession: URLSessionProtocol  // internal - 方便在测试用例中访问这些元素
+    
+    internal init(baseURL: URL, urlSession: URLSessionProtocol) {
         self.baseURL = baseURL
+        self.urlSession = urlSession
     }
     
-    static let shared = WeatherDataManager(baseURL: API.authenticatedURL)
+    static let shared = WeatherDataManager(baseURL: API.authenticatedURL, urlSession: URLSession.shared)
     
     /// 回调
     typealias CompletionHandler = (WeatherData?, WeatherDataError?) -> Void
@@ -38,7 +41,8 @@ final class WeatherDataManager {
         request.httpMethod = "GET"
         
         // 3. Launch the request
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        // Dependency Injection - 依赖注入
+        self.urlSession.dataTask(with: request) { (data, response, error) in
             // 4. Get the response here
             DispatchQueue.main.async {
                 self.didFinishGettingWeatherData(data: data, respose: response, error: error, completion: completion)

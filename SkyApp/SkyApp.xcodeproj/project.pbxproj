@@ -19,6 +19,12 @@
 		71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6C8221BEE5B00204142 /* WeatherData.swift */; };
 		71CCE6CC221BEFC200204142 /* WeatherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6CB221BEFC200204142 /* WeatherDataManager.swift */; };
 		71CCE6CE221BF65A00204142 /* WeatherDataManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */; };
+		71CCE6D1221C015A00204142 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D0221C015A00204142 /* URLSessionProtocol.swift */; };
+		71CCE6D4221C02D500204142 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D3221C02D500204142 /* URLSession.swift */; };
+		71CCE6D6221C03C100204142 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D5221C03C100204142 /* URLSessionDataTaskProtocol.swift */; };
+		71CCE6D8221C03EE00204142 /* URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */; };
+		71CCE6DA221C043800204142 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D9221C043800204142 /* MockURLSession.swift */; };
+		71CCE6DC221C07E000204142 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,12 @@
 		71CCE6C8221BEE5B00204142 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		71CCE6CB221BEFC200204142 /* WeatherDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManager.swift; sourceTree = "<group>"; };
 		71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManagerTest.swift; sourceTree = "<group>"; };
+		71CCE6D0221C015A00204142 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		71CCE6D3221C02D500204142 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		71CCE6D5221C03C100204142 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
+		71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTask.swift; sourceTree = "<group>"; };
+		71CCE6D9221C043800204142 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +120,8 @@
 		71CCE68C221AE94600204142 /* SkyApp */ = {
 			isa = PBXGroup;
 			children = (
+				71CCE6D2221C02C000204142 /* Extensions */,
+				71CCE6CF221C014500204142 /* Protocols */,
 				71CCE6CA221BEFB100204142 /* Manager */,
 				71CCE6C5221BE8C900204142 /* Models */,
 				71CCE6C2221BE46500204142 /* Configuration */,
@@ -125,6 +139,8 @@
 			children = (
 				71CCE6A4221AE94800204142 /* Info.plist */,
 				71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */,
+				71CCE6D9221C043800204142 /* MockURLSession.swift */,
+				71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */,
 			);
 			path = SkyAppTests;
 			sourceTree = "<group>";
@@ -202,6 +218,24 @@
 				71CCE6CB221BEFC200204142 /* WeatherDataManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		71CCE6CF221C014500204142 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6D0221C015A00204142 /* URLSessionProtocol.swift */,
+				71CCE6D5221C03C100204142 /* URLSessionDataTaskProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		71CCE6D2221C02C000204142 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6D3221C02D500204142 /* URLSession.swift */,
+				71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,7 +371,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CCE6D1221C015A00204142 /* URLSessionProtocol.swift in Sources */,
 				71CCE6CC221BEFC200204142 /* WeatherDataManager.swift in Sources */,
+				71CCE6D6221C03C100204142 /* URLSessionDataTaskProtocol.swift in Sources */,
+				71CCE6D8221C03EE00204142 /* URLSessionDataTask.swift in Sources */,
+				71CCE6D4221C02D500204142 /* URLSession.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
 				71CCE690221AE94600204142 /* ViewController.swift in Sources */,
@@ -350,6 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CCE6DC221C07E000204142 /* MockURLSessionDataTask.swift in Sources */,
+				71CCE6DA221C043800204142 /* MockURLSession.swift in Sources */,
 				71CCE6CE221BF65A00204142 /* WeatherDataManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
