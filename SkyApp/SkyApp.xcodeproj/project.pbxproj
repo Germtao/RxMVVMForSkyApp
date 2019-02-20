@@ -25,6 +25,7 @@
 		71CCE6D8221C03EE00204142 /* URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */; };
 		71CCE6DA221C043800204142 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6D9221C043800204142 /* MockURLSession.swift */; };
 		71CCE6DC221C07E000204142 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */; };
+		71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6DE221D3C5500204142 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTask.swift; sourceTree = "<group>"; };
 		71CCE6D9221C043800204142 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		71CCE6DE221D3C5500204142 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		71CCE6BF221BD22C00204142 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				71CCE6DD221D3C1D00204142 /* WeatherVcs */,
 				71CCE68F221AE94600204142 /* ViewController.swift */,
 			);
 			path = ViewControllers;
@@ -236,6 +239,14 @@
 				71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		71CCE6DD221D3C1D00204142 /* WeatherVcs */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6DE221D3C5500204142 /* WeatherViewController.swift */,
+			);
+			path = WeatherVcs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +392,7 @@
 				71CCE690221AE94600204142 /* ViewController.swift in Sources */,
 				71CCE6C7221BE8DB00204142 /* Location.swift in Sources */,
 				71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */,
+				71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

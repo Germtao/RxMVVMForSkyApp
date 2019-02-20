@@ -57,6 +57,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pqw-iE-P6b">
+                                <rect key="frame" x="177.5" y="117" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFJ-JM-HVJ">
+                                <rect key="frame" x="8" y="116.5" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7p-bP-fWL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
                                 <subviews>
@@ -144,8 +153,15 @@
                             <constraint firstAttribute="bottom" secondItem="Y7p-bP-fWL" secondAttribute="bottom" id="59r-GS-8Me"/>
                             <constraint firstItem="Y7p-bP-fWL" firstAttribute="leading" secondItem="vdi-4H-8Eq" secondAttribute="leading" id="8sY-NZ-fcy"/>
                             <constraint firstAttribute="trailing" secondItem="Y7p-bP-fWL" secondAttribute="trailing" id="AUV-CH-aBy"/>
+                            <constraint firstItem="rFJ-JM-HVJ" firstAttribute="leading" secondItem="UPU-ii-qyk" secondAttribute="leading" constant="8" id="Non-tp-B01"/>
+                            <constraint firstItem="rFJ-JM-HVJ" firstAttribute="centerY" secondItem="vdi-4H-8Eq" secondAttribute="centerY" id="bkV-NK-RRG"/>
+                            <constraint firstItem="pqw-iE-P6b" firstAttribute="centerY" secondItem="vdi-4H-8Eq" secondAttribute="centerY" id="gHa-T7-Sdq"/>
+                            <constraint firstItem="rFJ-JM-HVJ" firstAttribute="centerX" secondItem="vdi-4H-8Eq" secondAttribute="centerX" id="hc5-Eg-VUg"/>
+                            <constraint firstItem="pqw-iE-P6b" firstAttribute="centerX" secondItem="vdi-4H-8Eq" secondAttribute="centerX" id="lLh-rD-zVI"/>
+                            <constraint firstItem="UPU-ii-qyk" firstAttribute="trailing" secondItem="rFJ-JM-HVJ" secondAttribute="trailing" constant="8" id="rhu-w8-IGj"/>
                             <constraint firstItem="Y7p-bP-fWL" firstAttribute="top" secondItem="vdi-4H-8Eq" secondAttribute="top" id="vtH-M5-fZ8"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="UPU-ii-qyk"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqY-Ub-0ef" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +176,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="381"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rnb-AS-NMs"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHb-s0-puT" userLabel="First Responder" sceneMemberID="firstResponder"/>
