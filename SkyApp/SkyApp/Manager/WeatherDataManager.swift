@@ -44,9 +44,9 @@ final class WeatherDataManager {
         // Dependency Injection - 依赖注入
         self.urlSession.dataTask(with: request) { (data, response, error) in
             // 4. Get the response here
-            DispatchQueue.main.async {
-                self.didFinishGettingWeatherData(data: data, respose: response, error: error, completion: completion)
-            }
+            // 直接调用它就好了，如果要更新UI，我们应该明确在closure里指出让代码在主线程中执行。
+            // 这样weatherDataAt的实现，就可以在测试环境里，用同步的方式执行了
+            self.didFinishGettingWeatherData(data: data, respose: response, error: error, completion: completion)
         }.resume()
     }
 }
@@ -59,7 +59,10 @@ extension WeatherDataManager {
         } else if let data = data, let respose = respose as? HTTPURLResponse {
             if respose.statusCode == 200 {
                 do {
-                    let weatherData = try JSONDecoder().decode(WeatherData.self, from: data)
+                    // 由于DarkSky返回的是UNIX时间戳，我们要在解码的时候，设置一下Date对象的解码方式
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .secondsSince1970
+                    let weatherData = try decoder.decode(WeatherData.self, from: data)
                     completion(weatherData, nil)
                 } catch {
                     completion(nil, WeatherDataError.invalidResponse)

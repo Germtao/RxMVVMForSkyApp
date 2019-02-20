@@ -10,9 +10,14 @@ import Foundation
 @testable import SkyApp
 
 class MockURLSession: URLSessionProtocol {
-    var sessionDataTask = MockURLSessionDataTask()
+    var responseData: Data?
+    var responseHeader: HTTPURLResponse?
+    var responseError: Error?
     
+    var sessionDataTask = MockURLSessionDataTask()
     func dataTask(with request: URLRequest, completionHandler: @escaping MockURLSession.dataTaskHandler) -> URLSessionDataTaskProtocol {
+        // 直接调用dataTask的回调函数就好了。这样，就把一个异步回调方法，在测试的过程中变成了一个同步方法
+        completionHandler(responseData, responseHeader, responseError)
         return sessionDataTask
     }
 }
