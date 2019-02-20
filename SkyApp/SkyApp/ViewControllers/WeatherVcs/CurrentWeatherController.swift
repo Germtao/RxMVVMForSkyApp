@@ -48,18 +48,19 @@ class CurrentWeatherController: WeatherViewController {
     private func updateView() {
         activityIndicator.stopAnimating()
         
-        if let now = now, let location = location {
-            updateWeatherContainerView(with: now, at: location)
+        if let now = now {
+            updateWeatherContainerView(with: now)
+        } else if let location = location {
+            updateWeatherContainerView(at: location)
         } else {
             loadingFailedLabel.isHidden = false
-            locationLabel.text = "获取天气位置信息失败"
+            loadingFailedLabel.text = "获取天气位置信息失败"
         }
     }
     
-    private func updateWeatherContainerView(with data: WeatherData, at location: Location) {
+    private func updateWeatherContainerView(with data: WeatherData) {
         weatherContainerView.isHidden = false
         
-        locationLabel.text = location.name
         temperatureLabel.text = String(format: "%0.1f ℃", data.currently.temperature)
         weatherIcon.image = UIImage(named: data.currently.icon)
         humidityLabel.text = String(format: "%0.1f", data.currently.humidity)
@@ -68,6 +69,10 @@ class CurrentWeatherController: WeatherViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "E, dd MMMM"
         dateLabel.text = formatter.string(from: data.currently.time)
+    }
+    
+    private func updateWeatherContainerView(at location: Location) {
+        locationLabel.text = location.name
     }
     
     override func viewDidLoad() {

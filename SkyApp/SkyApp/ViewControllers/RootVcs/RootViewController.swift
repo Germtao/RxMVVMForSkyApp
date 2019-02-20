@@ -11,6 +11,27 @@ import CoreLocation
 
 class RootViewController: UIViewController {
     
+    private let segueCurrentWeather = "SegueCurrentWeather"
+    var currentWeatherVc: CurrentWeatherController!
+    
+    /// ViewControllers之间传递数据
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case segueCurrentWeather:
+            guard let destination = segue.destination as? CurrentWeatherController else {
+                fatalError("Invalid destination view controller!")
+            }
+            
+            currentWeatherVc = destination
+            currentWeatherVc.delegate = self
+            
+        default:
+            break
+        }
+    }
+    
     /// 存储用户当前定位
     private var currentLocation: CLLocation? {
         didSet {
@@ -37,6 +58,7 @@ class RootViewController: UIViewController {
     /// 请求位置
     private func requestLocation() {
         locationManager.delegate = self
+        locationManager.startUpdatingLocation()
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.requestLocation()
@@ -56,13 +78,12 @@ class RootViewController: UIViewController {
             if let error = error {
                 dump(error)
             } else if let response = response {
-                // Todo: 通知 currentWeatherController
-                
+                self.currentWeatherVc.now = response
             }
         }
     }
     
-    /// 获取城市
+    // MARK: - Todo: 获取城市
     private func fetchCity() {
         guard let currentLocation = currentLocation else { return }
         
@@ -71,8 +92,10 @@ class RootViewController: UIViewController {
             if let error = error {
                 dump(error)
             } else if let city = placemarks?.first?.locality {
-                // Todo: 通知currentWeatherController
-                
+                self.currentWeatherVc.location = Location(
+                    name: city,
+                    latitude: currentLocation.coordinate.latitude,
+                    longitude: currentLocation.coordinate.longitude)
             }
         }
     }
@@ -113,5 +136,17 @@ extension RootViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         dump(error)
     }
+}
+
+extension RootViewController: CurrentWeatherControllerDelegate {
+    func locationButtonPressed(controller: CurrentWeatherController) {
+        print("Open Locations")
+    }
+    
+    func settingButtonPressed(controller: CurrentWeatherController) {
+        print("Open Settting")
+    }
+    
+    
 }
 
