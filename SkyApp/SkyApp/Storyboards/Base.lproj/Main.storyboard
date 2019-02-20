@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SkyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="SkyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0c-Ut-nEQ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="254"/>
                                 <connections>
-                                    <segue destination="tWX-el-SjT" kind="embed" id="fGC-aC-2qx"/>
+                                    <segue destination="tWX-el-SjT" kind="embed" identifier="" id="fGC-aC-2qx"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFI-3l-Uk1">
@@ -177,6 +177,7 @@
                         <outlet property="locationLabel" destination="jEi-Tv-MV2" id="5Vu-hd-gou"/>
                         <outlet property="summaryLabel" destination="SQR-aA-5FH" id="3yR-YR-rkr"/>
                         <outlet property="temperatureLabel" destination="TCW-aE-amX" id="EgK-Ew-WXp"/>
+                        <outlet property="weatherContainerView" destination="Y7p-bP-fWL" id="KJP-qU-HBg"/>
                         <outlet property="weatherIcon" destination="6Cj-jy-GA4" id="FOJ-VS-pF7"/>
                     </connections>
                 </viewController>

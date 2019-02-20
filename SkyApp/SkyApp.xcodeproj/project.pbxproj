@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68D221AE94600204142 /* AppDelegate.swift */; };
-		71CCE690221AE94600204142 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68F221AE94600204142 /* ViewController.swift */; };
+		71CCE690221AE94600204142 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68F221AE94600204142 /* RootViewController.swift */; };
 		71CCE693221AE94600204142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE691221AE94600204142 /* Main.storyboard */; };
 		71CCE695221AE94700204142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE694221AE94700204142 /* Assets.xcassets */; };
 		71CCE698221AE94700204142 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE696221AE94700204142 /* LaunchScreen.storyboard */; };
@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		71CCE68A221AE94600204142 /* SkyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCE68D221AE94600204142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		71CCE68F221AE94600204142 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		71CCE68F221AE94600204142 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		71CCE692221AE94600204142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71CCE694221AE94700204142 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CCE697221AE94700204142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 		71CCE6BF221BD22C00204142 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				71CCE6E4221D485900204142 /* RootVcs */,
 				71CCE6DD221D3C1D00204142 /* WeatherVcs */,
-				71CCE68F221AE94600204142 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +253,14 @@
 				71CCE6E0221D3FE500204142 /* CurrentWeatherController.swift */,
 			);
 			path = WeatherVcs;
+			sourceTree = "<group>";
+		};
+		71CCE6E4221D485900204142 /* RootVcs */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE68F221AE94600204142 /* RootViewController.swift */,
+			);
+			path = RootVcs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,7 +405,7 @@
 				71CCE6D4221C02D500204142 /* URLSession.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
-				71CCE690221AE94600204142 /* ViewController.swift in Sources */,
+				71CCE690221AE94600204142 /* RootViewController.swift in Sources */,
 				71CCE6C7221BE8DB00204142 /* Location.swift in Sources */,
 				71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */,
 				71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */,
