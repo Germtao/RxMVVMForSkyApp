@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="-678" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Current Weather Controller-->
         <scene sceneID="hQN-Se-5JJ">
             <objects>
-                <viewController id="tWX-el-SjT" sceneMemberID="viewController">
+                <viewController id="tWX-el-SjT" customClass="CurrentWeatherController" customModule="SkyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vdi-4H-8Eq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,6 +83,9 @@
                                             <constraint firstAttribute="width" constant="44" id="sc6-AN-GL1"/>
                                         </constraints>
                                         <state key="normal" image="LocationBtn"/>
+                                        <connections>
+                                            <action selector="locationButtonPressed:" destination="tWX-el-SjT" eventType="touchUpInside" id="nxM-WH-e9H"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYI-Hr-Fgl">
                                         <rect key="frame" x="323" y="8" width="44" height="44"/>
@@ -91,6 +94,9 @@
                                             <constraint firstAttribute="height" constant="44" id="J27-ML-1vU"/>
                                         </constraints>
                                         <state key="normal" image="Setting"/>
+                                        <connections>
+                                            <action selector="settingButtonPressed:" destination="tWX-el-SjT" eventType="touchUpInside" id="l7g-Nj-X6c"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEi-Tv-MV2">
                                         <rect key="frame" x="60" y="14" width="255" height="32"/>
@@ -153,16 +159,26 @@
                             <constraint firstAttribute="bottom" secondItem="Y7p-bP-fWL" secondAttribute="bottom" id="59r-GS-8Me"/>
                             <constraint firstItem="Y7p-bP-fWL" firstAttribute="leading" secondItem="vdi-4H-8Eq" secondAttribute="leading" id="8sY-NZ-fcy"/>
                             <constraint firstAttribute="trailing" secondItem="Y7p-bP-fWL" secondAttribute="trailing" id="AUV-CH-aBy"/>
-                            <constraint firstItem="rFJ-JM-HVJ" firstAttribute="leading" secondItem="UPU-ii-qyk" secondAttribute="leading" constant="8" id="Non-tp-B01"/>
+                            <constraint firstItem="UPU-ii-qyk" firstAttribute="trailing" secondItem="rFJ-JM-HVJ" secondAttribute="trailing" constant="8" id="Tzh-Vv-r4X"/>
                             <constraint firstItem="rFJ-JM-HVJ" firstAttribute="centerY" secondItem="vdi-4H-8Eq" secondAttribute="centerY" id="bkV-NK-RRG"/>
                             <constraint firstItem="pqw-iE-P6b" firstAttribute="centerY" secondItem="vdi-4H-8Eq" secondAttribute="centerY" id="gHa-T7-Sdq"/>
                             <constraint firstItem="rFJ-JM-HVJ" firstAttribute="centerX" secondItem="vdi-4H-8Eq" secondAttribute="centerX" id="hc5-Eg-VUg"/>
                             <constraint firstItem="pqw-iE-P6b" firstAttribute="centerX" secondItem="vdi-4H-8Eq" secondAttribute="centerX" id="lLh-rD-zVI"/>
-                            <constraint firstItem="UPU-ii-qyk" firstAttribute="trailing" secondItem="rFJ-JM-HVJ" secondAttribute="trailing" constant="8" id="rhu-w8-IGj"/>
                             <constraint firstItem="Y7p-bP-fWL" firstAttribute="top" secondItem="vdi-4H-8Eq" secondAttribute="top" id="vtH-M5-fZ8"/>
+                            <constraint firstItem="rFJ-JM-HVJ" firstAttribute="leading" secondItem="UPU-ii-qyk" secondAttribute="leading" constant="8" id="xmx-c9-xxd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UPU-ii-qyk"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="pqw-iE-P6b" id="yxD-GH-DZy"/>
+                        <outlet property="dateLabel" destination="zgL-xp-INH" id="TJy-ev-IjC"/>
+                        <outlet property="humidityLabel" destination="wCk-b9-BCQ" id="cFU-pn-w4Z"/>
+                        <outlet property="loadingFailedLabel" destination="rFJ-JM-HVJ" id="eI1-OR-FWc"/>
+                        <outlet property="locationLabel" destination="jEi-Tv-MV2" id="5Vu-hd-gou"/>
+                        <outlet property="summaryLabel" destination="SQR-aA-5FH" id="3yR-YR-rkr"/>
+                        <outlet property="temperatureLabel" destination="TCW-aE-amX" id="EgK-Ew-WXp"/>
+                        <outlet property="weatherIcon" destination="6Cj-jy-GA4" id="FOJ-VS-pF7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqY-Ub-0ef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
