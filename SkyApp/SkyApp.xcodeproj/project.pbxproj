@@ -28,6 +28,8 @@
 		71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6DE221D3C5500204142 /* WeatherViewController.swift */; };
 		71CCE6E1221D3FE500204142 /* CurrentWeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6E0221D3FE500204142 /* CurrentWeatherController.swift */; };
 		71CCE6E3221D420000204142 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6E2221D420000204142 /* Double.swift */; };
+		71CCE6E7221E433F00204142 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6E6221E433F00204142 /* CurrentWeatherViewModel.swift */; };
+		71CCE6E9221E454800204142 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE6E8221E454800204142 /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		71CCE6DE221D3C5500204142 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		71CCE6E0221D3FE500204142 /* CurrentWeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherController.swift; sourceTree = "<group>"; };
 		71CCE6E2221D420000204142 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		71CCE6E6221E433F00204142 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
+		71CCE6E8221E454800204142 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +246,7 @@
 				71CCE6D3221C02D500204142 /* URLSession.swift */,
 				71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */,
 				71CCE6E2221D420000204142 /* Double.swift */,
+				71CCE6E8221E454800204142 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 		71CCE6DD221D3C1D00204142 /* WeatherVcs */ = {
 			isa = PBXGroup;
 			children = (
+				71CCE6E5221E431200204142 /* ViewModels */,
 				71CCE6DE221D3C5500204142 /* WeatherViewController.swift */,
 				71CCE6E0221D3FE500204142 /* CurrentWeatherController.swift */,
 			);
@@ -261,6 +267,14 @@
 				71CCE68F221AE94600204142 /* RootViewController.swift */,
 			);
 			path = RootVcs;
+			sourceTree = "<group>";
+		};
+		71CCE6E5221E431200204142 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6E6221E433F00204142 /* CurrentWeatherViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +416,7 @@
 				71CCE6D6221C03C100204142 /* URLSessionDataTaskProtocol.swift in Sources */,
 				71CCE6E3221D420000204142 /* Double.swift in Sources */,
 				71CCE6D8221C03EE00204142 /* URLSessionDataTask.swift in Sources */,
+				71CCE6E9221E454800204142 /* UIImage.swift in Sources */,
 				71CCE6D4221C02D500204142 /* URLSession.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
@@ -409,6 +424,7 @@
 				71CCE6C7221BE8DB00204142 /* Location.swift in Sources */,
 				71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */,
 				71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */,
+				71CCE6E7221E433F00204142 /* CurrentWeatherViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +602,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4UW8B3X7J9;
 				INFOPLIST_FILE = SkyApp/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -604,6 +621,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4UW8B3X7J9;
 				INFOPLIST_FILE = SkyApp/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

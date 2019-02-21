@@ -32,15 +32,9 @@ class CurrentWeatherController: WeatherViewController {
         delegate?.settingButtonPressed(controller: self)
     }
     
-    var now: WeatherData? {
+    var viewModel: CurrentWeatherViewModel? {
         didSet {
             // 明确在主线程刷新UI
-            DispatchQueue.main.async { self.updateView() }
-        }
-    }
-    
-    var location: Location? {
-        didSet {
             DispatchQueue.main.async { self.updateView() }
         }
     }
@@ -48,31 +42,23 @@ class CurrentWeatherController: WeatherViewController {
     private func updateView() {
         activityIndicator.stopAnimating()
         
-        if let now = now {
-            updateWeatherContainerView(with: now)
-        } else if let location = location {
-            updateWeatherContainerView(at: location)
+        if let vm = viewModel, vm.isUpdateReady {
+            updateWeatherContainerView(with: vm)
         } else {
             loadingFailedLabel.isHidden = false
             loadingFailedLabel.text = "获取天气位置信息失败"
         }
     }
     
-    private func updateWeatherContainerView(with data: WeatherData) {
+    private func updateWeatherContainerView(with vm: CurrentWeatherViewModel) {
         weatherContainerView.isHidden = false
         
-        temperatureLabel.text = String(format: "%0.1f ℃", data.currently.temperature)
-        weatherIcon.image = UIImage(named: data.currently.icon)
-        humidityLabel.text = String(format: "%0.1f", data.currently.humidity)
-        summaryLabel.text = data.currently.summary
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E, dd MMMM"
-        dateLabel.text = formatter.string(from: data.currently.time)
-    }
-    
-    private func updateWeatherContainerView(at location: Location) {
-        locationLabel.text = location.name
+        temperatureLabel.text = vm.temperature
+        weatherIcon.image = vm.weatherIcon
+        humidityLabel.text = vm.humidity
+        summaryLabel.text = vm.summary
+        dateLabel.text = vm.date
+        locationLabel.text = vm.city
     }
     
     override func viewDidLoad() {
