@@ -59,7 +59,6 @@ class RootViewController: UIViewController {
     /// 请求位置
     private func requestLocation() {
         locationManager.delegate = self
-        locationManager.startUpdatingLocation()
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.requestLocation()
