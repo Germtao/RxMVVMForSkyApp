@@ -18,6 +18,23 @@ class CurrentWeatherUITests: XCTestCase {
         
         continueAfterFailure = false
         
+        // 设置app执行环境
+        app.launchArguments += ["UI-TESTING"]  // 执行参数
+        let json = """
+        {
+            "longitude" : 100,
+            "latitude" : 52,
+            "currently" : {
+                "temperature" : 23,
+                "humidity" : 0.91,
+                "icon" : "snow",
+                "time" : 1507180335,
+                "summary" : "Light Snow"
+            }
+        }
+        """
+        app.launchEnvironment["FakeJSON"] = json  // 执行环境
+        
         app.launch()
     }
 
@@ -30,12 +47,12 @@ class CurrentWeatherUITests: XCTestCase {
     // MARK: - 等待异步加载UI
     func test_location_button_exists() {
         let locationBtn = app.buttons["LocationBtn"]
-        let exists = NSPredicate(format: "exists == true")
-
-        expectation(for: exists, evaluatedWith: locationBtn, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
-        
         XCTAssert(locationBtn.exists)
+    }
+    
+    func test_currently_weather_display() {
+        XCTAssert(app.images["snow"].exists)
+        XCTAssert(app.staticTexts["Light Snow"].exists)
     }
 
 }

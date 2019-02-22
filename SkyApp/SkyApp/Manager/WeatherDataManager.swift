@@ -8,6 +8,54 @@
 
 import Foundation
 
+// MARK: - Mock出来一套返回数据的API
+internal class DarkSkyURLSession: URLSessionProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
+        return DarkSkyURLSessionDataTask(request: request, completion: completionHandler)
+    }
+}
+
+internal class DarkSkyURLSessionDataTask: URLSessionDataTaskProtocol {
+    private let request: URLRequest
+    private let completion: DataTaskHandler
+    
+    init(request: URLRequest, completion: @escaping DataTaskHandler) {
+        self.request = request
+        self.completion = completion
+    }
+    
+    func resume() {
+        // 1. ProcessInfo.processInfo.environment
+        //    加载了测试时使用的JSON，这就是访问进程环境变量的方法
+        if let json = ProcessInfo.processInfo.environment["FakeJSON"] {
+            let response = HTTPURLResponse(
+                url: request.url!,
+                statusCode: 200,
+                httpVersion: nil,
+                headerFields: nil)
+            let data = json.data(using: .utf8)!
+            
+            // 2. 直接调用了completion方法，这样就在测试过程中把异步回调函数，变成了同步的
+            completion(data, response, nil)
+        }
+    }
+}
+
+// MARK: - 在生产和测试环境之间进行切换
+internal struct Config {
+    private static func isUITesting() -> Bool {
+        return ProcessInfo.processInfo.arguments.contains("UI-TESTING")
+    }
+    
+    static var urlSession: URLSessionProtocol = {
+        if isUITesting() {
+            return DarkSkyURLSession()
+        } else {
+            return URLSession.shared
+        }
+    }()
+}
+
 enum WeatherDataError: Error {
     case failedRequest     // 非法请求
     case invalidResponse   // 非法返回
@@ -25,7 +73,9 @@ final class WeatherDataManager {
         self.urlSession = urlSession
     }
     
-    static let shared = WeatherDataManager(baseURL: API.authenticatedURL, urlSession: URLSession.shared)
+    static let shared = WeatherDataManager(
+        baseURL: API.authenticatedURL,
+        urlSession: Config.urlSession) // 支持环境切换
     
     /// 回调
     typealias CompletionHandler = (WeatherData?, WeatherDataError?) -> Void
