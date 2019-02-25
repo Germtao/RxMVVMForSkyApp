@@ -39,7 +39,7 @@ class CurrentWeatherController: WeatherViewController {
         }
     }
     
-    private func updateView() {
+    func updateView() {
         activityIndicator.stopAnimating()
         
         if let vm = viewModel, vm.isUpdateReady {

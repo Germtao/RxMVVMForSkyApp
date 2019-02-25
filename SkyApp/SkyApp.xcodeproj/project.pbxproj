@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		711E30DC22238BA9004264BB /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30DB22238BA9004264BB /* ForecastData.swift */; };
 		711E30DE22239533004264BB /* WeekWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30DD22239533004264BB /* WeekWeatherViewModel.swift */; };
+		711E30E02223C266004264BB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30DF2223C266004264BB /* UserDefaults.swift */; };
+		711E30E22223DE54004264BB /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30E12223DE54004264BB /* SettingsTableViewCell.swift */; };
+		711E30E62223E044004264BB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30E52223E044004264BB /* SettingsTableViewController.swift */; };
 		71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68D221AE94600204142 /* AppDelegate.swift */; };
 		71CCE690221AE94600204142 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68F221AE94600204142 /* RootViewController.swift */; };
 		71CCE693221AE94600204142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE691221AE94600204142 /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		711E30DB22238BA9004264BB /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		711E30DD22239533004264BB /* WeekWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewModel.swift; sourceTree = "<group>"; };
+		711E30DF2223C266004264BB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		711E30E12223DE54004264BB /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		711E30E52223E044004264BB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		71CCE68A221AE94600204142 /* SkyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCE68D221AE94600204142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CCE68F221AE94600204142 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +120,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		711E30E32223E006004264BB /* SettingVcs */ = {
+			isa = PBXGroup;
+			children = (
+				711E30E42223E021004264BB /* TableViewCells */,
+				711E30E52223E044004264BB /* SettingsTableViewController.swift */,
+			);
+			path = SettingVcs;
+			sourceTree = "<group>";
+		};
+		711E30E42223E021004264BB /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				711E30E12223DE54004264BB /* SettingsTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		71CCE681221AE94600204142 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +233,7 @@
 			children = (
 				71CCE6E4221D485900204142 /* RootVcs */,
 				71CCE6DD221D3C1D00204142 /* WeatherVcs */,
+				711E30E32223E006004264BB /* SettingVcs */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +280,7 @@
 				71CCE6D7221C03EE00204142 /* URLSessionDataTask.swift */,
 				71CCE6E2221D420000204142 /* Double.swift */,
 				71CCE6E8221E454800204142 /* UIImage.swift */,
+				711E30DF2223C266004264BB /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -442,11 +467,14 @@
 				71CCE6D8221C03EE00204142 /* URLSessionDataTask.swift in Sources */,
 				71CCE6E9221E454800204142 /* UIImage.swift in Sources */,
 				71CCE6D4221C02D500204142 /* URLSession.swift in Sources */,
+				711E30E22223DE54004264BB /* SettingsTableViewCell.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
+				711E30E62223E044004264BB /* SettingsTableViewController.swift in Sources */,
 				71CCE690221AE94600204142 /* RootViewController.swift in Sources */,
 				71CCE6C7221BE8DB00204142 /* Location.swift in Sources */,
 				71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */,
+				711E30E02223C266004264BB /* UserDefaults.swift in Sources */,
 				71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */,
 				711E30DC22238BA9004264BB /* ForecastData.swift in Sources */,
 				71CCE6E7221E433F00204142 /* CurrentWeatherViewModel.swift in Sources */,

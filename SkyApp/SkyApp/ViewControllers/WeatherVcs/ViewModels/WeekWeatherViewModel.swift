@@ -24,8 +24,8 @@ struct WeekWeatherViewModel {
     }
     
     func temperature(for index: Int) -> String {
-        let min = String(format: "%.0f ℃", weatherDatas[index].temperatureLow.toCelcius())
-        let max = String(format: "%.0f ℃", weatherDatas[index].temperatureHigh.toCelcius())
+        let min = format(temperature: weatherDatas[index].temperatureLow)
+        let max = format(temperature: weatherDatas[index].temperatureHigh)
         return "\(min) - \(max)"
     }
     
@@ -45,5 +45,15 @@ struct WeekWeatherViewModel {
     
     var numberOfDays: Int {
         return weatherDatas.count
+    }
+    
+    // MARK: - Helper
+    func format(temperature: Double) -> String {
+        switch UserDefaults.temperatureMode() {
+        case .celsius:
+            return String(format: "%.0f °C", temperature.toCelcius())
+        case .fahrenheit:
+            return String(format: "%.0f °F", temperature)
+        }
     }
 }
