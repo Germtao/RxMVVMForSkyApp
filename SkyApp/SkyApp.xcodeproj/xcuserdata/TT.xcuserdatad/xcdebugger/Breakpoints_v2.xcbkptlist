@@ -9,46 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SkyApp/ViewControllers/RootVcs/RootViewController.swift"
-            timestampString = "572515982.1112731"
+            filePath = "SkyAppTests/WeatherDataManagerTest.swift"
+            timestampString = "572762049.0082721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "fetchCity()"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "test_weatherDataAt_hanle_response_decode()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SkyApp.RootViewController.(fetchCity in _EA7FF9646B8C2917C691FDFE634A5596)() -&gt; ()"
-                  moduleName = "SkyApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tao/Documents/Coder/GitHub/RxMVVMForSkyApp/SkyApp/SkyApp/ViewControllers/RootVcs/RootViewController.swift"
-                  timestampString = "572515982.5063601"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SkyApp.RootViewController.(fetchCity in _EA7FF9646B8C2917C691FDFE634A5596)() -&gt; ()"
-                  moduleName = "SkyApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tao/Documents/Coder/GitHub/RxMVVMForSkyApp/SkyApp/SkyApp/ViewControllers/RootVcs/RootViewController.swift"
-                  timestampString = "572515982.508438"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SkyApp/ViewControllers/RootVcs/RootViewController.swift"
-            timestampString = "572515982.111443"
+            filePath = "SkyApp/Manager/WeatherDataManager.swift"
+            timestampString = "572762049.008733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "fetchCity()"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "didFinishGettingWeatherData(data:respose:error:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SkyApp/Manager/WeatherDataManager.swift"
+            timestampString = "572762049.008794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "didFinishGettingWeatherData(data:respose:error:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
