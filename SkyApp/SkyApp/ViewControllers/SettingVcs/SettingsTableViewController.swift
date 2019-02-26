@@ -86,8 +86,7 @@ extension SettingsTableViewController {
         }
         
         if let vm = vm {
-            cell.accessoryType = vm.accessory
-            cell.label.text = vm.labelText
+            cell.configure(vm: vm)
         }
         
         return cell
