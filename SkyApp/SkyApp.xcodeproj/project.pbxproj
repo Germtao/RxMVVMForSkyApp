@@ -15,6 +15,8 @@
 		711E30E92224D7BA004264BB /* SettingsDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30E82224D7BA004264BB /* SettingsDateViewModel.swift */; };
 		711E30EB2224D933004264BB /* SettingsTemperatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30EA2224D933004264BB /* SettingsTemperatureViewModel.swift */; };
 		711E30EE2224EA25004264BB /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30ED2224EA25004264BB /* SettingsContent.swift */; };
+		711E30F0222516B1004264BB /* WeekWeatherDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30EF222516B1004264BB /* WeekWeatherDayViewModel.swift */; };
+		711E30F3222524CB004264BB /* WeekWeatherDayRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30F2222524CB004264BB /* WeekWeatherDayRepresentable.swift */; };
 		71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68D221AE94600204142 /* AppDelegate.swift */; };
 		71CCE690221AE94600204142 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68F221AE94600204142 /* RootViewController.swift */; };
 		71CCE693221AE94600204142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE691221AE94600204142 /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		711E30E82224D7BA004264BB /* SettingsDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDateViewModel.swift; sourceTree = "<group>"; };
 		711E30EA2224D933004264BB /* SettingsTemperatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTemperatureViewModel.swift; sourceTree = "<group>"; };
 		711E30ED2224EA25004264BB /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
+		711E30EF222516B1004264BB /* WeekWeatherDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherDayViewModel.swift; sourceTree = "<group>"; };
+		711E30F2222524CB004264BB /* WeekWeatherDayRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherDayRepresentable.swift; sourceTree = "<group>"; };
 		71CCE68A221AE94600204142 /* SkyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCE68D221AE94600204142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CCE68F221AE94600204142 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,14 @@
 			isa = PBXGroup;
 			children = (
 				711E30ED2224EA25004264BB /* SettingsContent.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		711E30F12225218D004264BB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				711E30F2222524CB004264BB /* WeekWeatherDayRepresentable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -313,6 +325,7 @@
 		71CCE6DD221D3C1D00204142 /* WeatherVcs */ = {
 			isa = PBXGroup;
 			children = (
+				711E30F12225218D004264BB /* Protocols */,
 				71CCE6EE221FF4E100204142 /* TableViewCells */,
 				71CCE6E5221E431200204142 /* ViewModels */,
 				71CCE6DE221D3C5500204142 /* WeatherViewController.swift */,
@@ -335,6 +348,7 @@
 			children = (
 				71CCE6E6221E433F00204142 /* CurrentWeatherViewModel.swift */,
 				711E30DD22239533004264BB /* WeekWeatherViewModel.swift */,
+				711E30EF222516B1004264BB /* WeekWeatherDayViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -493,11 +507,13 @@
 				71CCE6E9221E454800204142 /* UIImage.swift in Sources */,
 				711E30E92224D7BA004264BB /* SettingsDateViewModel.swift in Sources */,
 				71CCE6D4221C02D500204142 /* URLSession.swift in Sources */,
+				711E30F0222516B1004264BB /* WeekWeatherDayViewModel.swift in Sources */,
 				711E30E22223DE54004264BB /* SettingsTableViewCell.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
 				711E30EE2224EA25004264BB /* SettingsContent.swift in Sources */,
 				711E30E62223E044004264BB /* SettingsTableViewController.swift in Sources */,
+				711E30F3222524CB004264BB /* WeekWeatherDayRepresentable.swift in Sources */,
 				711E30EB2224D933004264BB /* SettingsTemperatureViewModel.swift in Sources */,
 				71CCE690221AE94600204142 /* RootViewController.swift in Sources */,
 				71CCE6C7221BE8DB00204142 /* Location.swift in Sources */,
