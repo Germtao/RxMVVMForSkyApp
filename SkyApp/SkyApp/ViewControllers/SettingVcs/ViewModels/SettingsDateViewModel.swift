@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SettingsDateViewModel {
+struct SettingsDateViewModel: SettingsRepresentable {
     let dateMode: DateMode
     
     /// 根据dateMode确定显示文字

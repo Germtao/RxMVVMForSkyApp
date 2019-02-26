@@ -68,21 +68,24 @@ extension SettingsTableViewController {
             fatalError("Unexpected section index")
         }
         
+        var vm: SettingsRepresentable?
+        
         // ViewModel不一定得是一个View Controller持有的属性，也可以只一个方法的局部变量而已
         switch section {
         case .date:
             guard let dateMode = DateMode(rawValue: indexPath.row) else {
                 fatalError("Invalide IndexPath")
             }
-            let vm = SettingsDateViewModel(dateMode: dateMode)
-            cell.accessoryType = vm.accessory
-            cell.label.text = vm.labelText
+            vm = SettingsDateViewModel(dateMode: dateMode)
             
         case .temperature:
             guard let temperatureMode = TemperatureMode(rawValue: indexPath.row) else {
                 fatalError("Invalide IndexPath")
             }
-            let vm = SettingsTemperatureViewModel(temperatureMode: temperatureMode)
+            vm = SettingsTemperatureViewModel(temperatureMode: temperatureMode)
+        }
+        
+        if let vm = vm {
             cell.accessoryType = vm.accessory
             cell.label.text = vm.labelText
         }

@@ -14,6 +14,7 @@
 		711E30E62223E044004264BB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30E52223E044004264BB /* SettingsTableViewController.swift */; };
 		711E30E92224D7BA004264BB /* SettingsDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30E82224D7BA004264BB /* SettingsDateViewModel.swift */; };
 		711E30EB2224D933004264BB /* SettingsTemperatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30EA2224D933004264BB /* SettingsTemperatureViewModel.swift */; };
+		711E30EE2224EA25004264BB /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30ED2224EA25004264BB /* SettingsContent.swift */; };
 		71CCE68E221AE94600204142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68D221AE94600204142 /* AppDelegate.swift */; };
 		71CCE690221AE94600204142 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCE68F221AE94600204142 /* RootViewController.swift */; };
 		71CCE693221AE94600204142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CCE691221AE94600204142 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		711E30E52223E044004264BB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		711E30E82224D7BA004264BB /* SettingsDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDateViewModel.swift; sourceTree = "<group>"; };
 		711E30EA2224D933004264BB /* SettingsTemperatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTemperatureViewModel.swift; sourceTree = "<group>"; };
+		711E30ED2224EA25004264BB /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
 		71CCE68A221AE94600204142 /* SkyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CCE68D221AE94600204142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CCE68F221AE94600204142 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		711E30E32223E006004264BB /* SettingVcs */ = {
 			isa = PBXGroup;
 			children = (
+				711E30EC2224EA08004264BB /* Protocols */,
 				711E30E72224D79A004264BB /* ViewModels */,
 				711E30E42223E021004264BB /* TableViewCells */,
 				711E30E52223E044004264BB /* SettingsTableViewController.swift */,
@@ -149,6 +152,14 @@
 				711E30EA2224D933004264BB /* SettingsTemperatureViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		711E30EC2224EA08004264BB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				711E30ED2224EA25004264BB /* SettingsContent.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		71CCE681221AE94600204142 = {
@@ -485,6 +496,7 @@
 				711E30E22223DE54004264BB /* SettingsTableViewCell.swift in Sources */,
 				71CCE6C4221BE5CC00204142 /* Configuration.swift in Sources */,
 				71CCE6C9221BEE5B00204142 /* WeatherData.swift in Sources */,
+				711E30EE2224EA25004264BB /* SettingsContent.swift in Sources */,
 				711E30E62223E044004264BB /* SettingsTableViewController.swift in Sources */,
 				711E30EB2224D933004264BB /* SettingsTemperatureViewModel.swift in Sources */,
 				71CCE690221AE94600204142 /* RootViewController.swift in Sources */,
