@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B8370B42227E296005B719A /* SettingsDateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8370B32227E296005B719A /* SettingsDateViewModelTests.swift */; };
+		3B8370B62227E6EC005B719A /* SettingsTemperatureViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8370B52227E6EC005B719A /* SettingsTemperatureViewModelTests.swift */; };
 		711E30DC22238BA9004264BB /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30DB22238BA9004264BB /* ForecastData.swift */; };
 		711E30DE22239533004264BB /* WeekWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30DD22239533004264BB /* WeekWeatherViewModel.swift */; };
 		711E30E02223C266004264BB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E30DF2223C266004264BB /* UserDefaults.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B8370B32227E296005B719A /* SettingsDateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDateViewModelTests.swift; sourceTree = "<group>"; };
+		3B8370B52227E6EC005B719A /* SettingsTemperatureViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTemperatureViewModelTests.swift; sourceTree = "<group>"; };
 		711E30DB22238BA9004264BB /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		711E30DD22239533004264BB /* WeekWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewModel.swift; sourceTree = "<group>"; };
 		711E30DF2223C266004264BB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -130,6 +134,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B8370B02227E1D1005B719A /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6A4221AE94800204142 /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		3B8370B12227E1F2005B719A /* TestCases */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */,
+				3B8370B32227E296005B719A /* SettingsDateViewModelTests.swift */,
+				3B8370B52227E6EC005B719A /* SettingsTemperatureViewModelTests.swift */,
+			);
+			path = TestCases;
+			sourceTree = "<group>";
+		};
+		3B8370B22227E1FF005B719A /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				71CCE6D9221C043800204142 /* MockURLSession.swift */,
+				71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		711E30E32223E006004264BB /* SettingVcs */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,10 +246,9 @@
 		71CCE6A1221AE94800204142 /* SkyAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				71CCE6A4221AE94800204142 /* Info.plist */,
-				71CCE6CD221BF65A00204142 /* WeatherDataManagerTest.swift */,
-				71CCE6D9221C043800204142 /* MockURLSession.swift */,
-				71CCE6DB221C07E000204142 /* MockURLSessionDataTask.swift */,
+				3B8370B02227E1D1005B719A /* SupportFiles */,
+				3B8370B12227E1F2005B719A /* TestCases */,
+				3B8370B22227E1FF005B719A /* Stubs */,
 			);
 			path = SkyAppTests;
 			sourceTree = "<group>";
@@ -531,6 +561,8 @@
 			files = (
 				71CCE6DC221C07E000204142 /* MockURLSessionDataTask.swift in Sources */,
 				71CCE6DA221C043800204142 /* MockURLSession.swift in Sources */,
+				3B8370B42227E296005B719A /* SettingsDateViewModelTests.swift in Sources */,
+				3B8370B62227E6EC005B719A /* SettingsTemperatureViewModelTests.swift in Sources */,
 				71CCE6CE221BF65A00204142 /* WeatherDataManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,7 +771,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SkyAppTests/Info.plist;
+				INFOPLIST_FILE = SkyAppTests/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,7 +793,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SkyAppTests/Info.plist;
+				INFOPLIST_FILE = SkyAppTests/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
