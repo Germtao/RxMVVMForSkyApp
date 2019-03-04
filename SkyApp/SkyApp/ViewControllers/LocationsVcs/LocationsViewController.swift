@@ -19,20 +19,34 @@ class LocationsViewController: UITableViewController {
     var currentLocation: CLLocation?
     var favourites = UserDefaults.loadLocations()
     
+    private let segueAddLocationView = "SegueAddLocationView"
+    
     private var hasFavourites: Bool {
         return favourites.count > 0
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case segueAddLocationView:
+            let destination = segue.destination
+            if let addLocationVc = destination as? AddLocationViewController {
+                addLocationVc.delegate = self
+            } else {
+                fatalError("Unexpected destination view controller")
+            }
+        default:
+            break
+        }
     }
 
+    /// 为了响应AddLocationViewController的Cancel按钮, 添加以下方法
+    @IBAction func unwindToLocationsViewController(segue: UIStoryboardSegue) {}
 }
 
 // MARK: - UITableViewDataSource
@@ -149,5 +163,14 @@ extension LocationsViewController {
             delegate?.controller(self, didSelectLocation: location!)
             dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+// MARK: - AddLocationViewControllerDelegate
+extension LocationsViewController: AddLocationViewControllerDelegate {
+    func controller(_ controller: AddLocationViewController, didAddLocation location: Location) {
+        UserDefaults.addLocation(location)
+        favourites.append(location)
+        tableView.reloadData()
     }
 }

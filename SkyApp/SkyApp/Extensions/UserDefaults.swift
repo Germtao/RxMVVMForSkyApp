@@ -74,7 +74,7 @@ extension UserDefaults {
     /// 删除位置
     static func removeLocation(_ location: Location) {
         var locations = loadLocations()
-        guard let index = locations.index(of: location) else { return }
+        guard let index = locations.firstIndex(where: { $0 == location }) else { return }
         locations.remove(at: index)
         saveLocations(locations)
     }

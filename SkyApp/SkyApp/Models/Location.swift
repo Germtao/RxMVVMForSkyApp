@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 /// 表示当前位置和地区名称
-struct Location {
+struct Location: Equatable {
     var name: String
     /// 纬度
     var latitude: Double
