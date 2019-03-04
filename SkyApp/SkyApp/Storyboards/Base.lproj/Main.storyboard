@@ -46,6 +46,7 @@
                     </view>
                     <connections>
                         <segue destination="68a-Li-Guc" kind="presentation" identifier="SegueSettings" id="Xvz-Cd-cK5"/>
+                        <segue destination="XFL-cx-2Um" kind="presentation" identifier="SegueLocations" id="9XB-eU-ePG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -320,7 +321,7 @@
         <!--定位-->
         <scene sceneID="RPJ-ub-CLt">
             <objects>
-                <tableViewController id="D4t-DX-UiJ" sceneMemberID="viewController">
+                <tableViewController id="D4t-DX-UiJ" customClass="LocationsViewController" customModule="SkyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="aHe-WW-PjJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
