@@ -44,4 +44,7 @@ struct Location: Equatable {
     var toDictionary: [String: Any] {
         return ["name": name, "latitude": latitude, "longitude": longitude]
     }
+    
+    /// 静态成员，让它们表示一个“空的Model”这样的概念, 取代nil未设置
+    static let empty = Location(name: "", latitude: 0, longitude: 0)
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol CurrentWeatherControllerDelegate: class {
     func locationButtonPressed(controller: CurrentWeatherController)
@@ -24,6 +26,11 @@ class CurrentWeatherController: WeatherViewController {
     
     weak var delegate: CurrentWeatherControllerDelegate?
     
+    private var bag = DisposeBag()
+    
+    var weatherVM: BehaviorRelay<CurrentWeatherViewModel> = BehaviorRelay(value: CurrentWeatherViewModel.empty)
+    var locationVM: BehaviorRelay<CurrentLocationViewModel> = BehaviorRelay(value: CurrentLocationViewModel.empty)
+    
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         delegate?.locationButtonPressed(controller: self)
     }
@@ -32,39 +39,35 @@ class CurrentWeatherController: WeatherViewController {
         delegate?.settingButtonPressed(controller: self)
     }
     
-    var viewModel: CurrentWeatherViewModel? {
-        didSet {
-            // 明确在主线程刷新UI
-            DispatchQueue.main.async { self.updateView() }
-        }
-    }
-    
     func updateView() {
-        activityIndicator.stopAnimating()
-        
-        if let vm = viewModel, vm.isUpdateReady {
-            updateWeatherContainerView(with: vm)
-        } else {
-            loadingFailedLabel.isHidden = false
-            loadingFailedLabel.text = "获取天气位置信息失败"
-        }
-    }
-    
-    private func updateWeatherContainerView(with vm: CurrentWeatherViewModel) {
-        weatherContainerView.isHidden = false
-        
-        temperatureLabel.text = vm.temperature
-        weatherIcon.image = vm.weatherIcon
-        humidityLabel.text = vm.humidity
-        summaryLabel.text = vm.summary
-        dateLabel.text = vm.date
-        locationLabel.text = vm.city
+        weatherVM.accept(weatherVM.value)
+        locationVM.accept(locationVM.value)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        // 合并出一个包含weatherVM和locationVM事件值的Observable
+        Observable.combineLatest(locationVM, weatherVM) {
+            return ($0, $1)
+            }
+            .filter { // 筛选一下过滤的结果，要求它们的事件值都不为“空”
+                let (location, weather) = $0
+                return !location.isEmpty && !weather.isEmpty
+            }
+            .observeOn(MainScheduler.instance) // 确保订阅者在主线程上执行代码
+            .subscribe(onNext: { [unowned self] in
+                let (location, weather) = $0
+                
+                self.weatherContainerView.isHidden = false
+                self.locationLabel.text = location.city
+                
+                self.temperatureLabel.text = weather.temperature
+                self.weatherIcon.image = weather.weatherIcon
+                self.humidityLabel.text = weather.humidity
+                self.summaryLabel.text = weather.summary
+                self.dateLabel.text = weather.date
+            }).disposed(by: bag)
     }
 
 }

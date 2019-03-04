@@ -10,26 +10,13 @@ import UIKit
 
 /// 主要作用: 就是要把Model和Controller隔离, 它应该为Controller提供所有数据访问的接口
 struct CurrentWeatherViewModel {
-    // 加几个属性，用于在Controller中标记更新状态
-    var isLocationReady = false
-    var isWeatherReady = false
-    var isUpdateReady: Bool {
-        return isLocationReady && isWeatherReady
-    }
     
-    var location: Location! {
-        didSet {
-            self.isLocationReady = location != nil ? true : false
-        }
-    }
-    var weather: WeatherData! {
-        didSet {
-            self.isWeatherReady = weather != nil ? true : false
-        }
-    }
+    var weather: WeatherData
     
-    var city: String {
-        return location.name
+    static let empty = CurrentWeatherViewModel(weather: WeatherData.empty)
+    
+    var isEmpty: Bool {
+        return self.weather == WeatherData.empty
     }
     
     var temperature: String {

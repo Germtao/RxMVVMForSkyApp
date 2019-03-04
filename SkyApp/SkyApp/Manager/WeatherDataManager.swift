@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 // MARK: - Mock出来一套返回数据的API
 internal class DarkSkyURLSession: URLSessionProtocol {
@@ -80,8 +82,8 @@ final class WeatherDataManager {
     /// 回调
     typealias CompletionHandler = (WeatherData?, WeatherDataError?) -> Void
     
-    /// 请求天气数据
-    func weatherDataAt(latitude: Double, longitude: Double, completion: @escaping CompletionHandler) {
+    /// 请求天气数据, 变成一个 Observable
+    func weatherDataAt(latitude: Double, longitude: Double) -> Observable<WeatherData> {
         // 1. Concatenate the URL
         let url = baseURL.appendingPathComponent("\(latitude), \(longitude)")
         var request = URLRequest(url: url)
@@ -91,37 +93,10 @@ final class WeatherDataManager {
         request.httpMethod = "GET"
         
         // 3. Launch the request
-        // Dependency Injection - 依赖注入
-        self.urlSession.dataTask(with: request) { (data, response, error) in
-            // 4. Get the response here
-            // 直接调用它就好了，如果要更新UI，我们应该明确在closure里指出让代码在主线程中执行。
-            // 这样weatherDataAt的实现，就可以在测试环境里，用同步的方式执行了
-            self.didFinishGettingWeatherData(data: data, respose: response, error: error, completion: completion)
-        }.resume()
-    }
-}
-
-// MARK: - Helper
-extension WeatherDataManager {
-    func didFinishGettingWeatherData(data: Data?, respose: URLResponse?, error: Error?, completion: CompletionHandler) {
-        if let _ = error {
-            completion(nil, .failedRequest)
-        } else if let data = data, let respose = respose as? HTTPURLResponse {
-            if respose.statusCode == 200 {
-                do {
-                    // 由于DarkSky返回的是UNIX时间戳，我们要在解码的时候，设置一下Date对象的解码方式
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .secondsSince1970
-                    let weatherData = try decoder.decode(WeatherData.self, from: data)
-                    completion(weatherData, nil)
-                } catch {
-                    completion(nil, WeatherDataError.invalidResponse)
-                }
-            } else {
-                completion(nil, WeatherDataError.failedRequest)
-            }
-        } else {
-            completion(nil, WeatherDataError.unkown)
+        return (self.urlSession as! URLSession).rx.data(request: request).map {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
+            return try decoder.decode(WeatherData.self, from: $0)
         }
     }
 }
