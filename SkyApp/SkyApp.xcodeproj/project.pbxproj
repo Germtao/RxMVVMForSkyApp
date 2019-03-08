@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B668DA9565FF79475B2335D /* Pods_SkyAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B689383E52F7A75217E1359 /* Pods_SkyAppTests.framework */; };
+		3B7EE58522324C7F00CD9639 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EE58422324C7F00CD9639 /* CLLocationManager+Rx.swift */; };
 		3B8370B42227E296005B719A /* SettingsDateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8370B32227E296005B719A /* SettingsDateViewModelTests.swift */; };
 		3B8370B62227E6EC005B719A /* SettingsTemperatureViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8370B52227E6EC005B719A /* SettingsTemperatureViewModelTests.swift */; };
 		3B8370B82227EBE5005B719A /* DarkSky.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B8370B72227EBE5005B719A /* DarkSky.json */; };
@@ -83,6 +84,7 @@
 /* Begin PBXFileReference section */
 		0140E990AD2D1F9AE8DFC2B6 /* Pods-SkyAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkyAppUITests.release.xcconfig"; path = "Target Support Files/Pods-SkyAppUITests/Pods-SkyAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		01F7B07E7357963F0025BD79 /* Pods-SkyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SkyAppTests/Pods-SkyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B7EE58422324C7F00CD9639 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
 		3B8370B32227E296005B719A /* SettingsDateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDateViewModelTests.swift; sourceTree = "<group>"; };
 		3B8370B52227E6EC005B719A /* SettingsTemperatureViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTemperatureViewModelTests.swift; sourceTree = "<group>"; };
 		3B8370B72227EBE5005B719A /* DarkSky.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DarkSky.json; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				71CCE6E8221E454800204142 /* UIImage.swift */,
 				711E30DF2223C266004264BB /* UserDefaults.swift */,
 				3B8370CE222CCCE3005B719A /* CLLocation.swift */,
+				3B7EE58422324C7F00CD9639 /* CLLocationManager+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				71CCE6DF221D3C5500204142 /* WeatherViewController.swift in Sources */,
 				711E30DC22238BA9004264BB /* ForecastData.swift in Sources */,
 				3B8370D3222D0508005B719A /* AddLocationViewController.swift in Sources */,
+				3B7EE58522324C7F00CD9639 /* CLLocationManager+Rx.swift in Sources */,
 				71CCE6E7221E433F00204142 /* CurrentWeatherViewModel.swift in Sources */,
 				3B8370C7222CC908005B719A /* LocationsViewCell.swift in Sources */,
 			);

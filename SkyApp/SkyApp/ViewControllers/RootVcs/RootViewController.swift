@@ -93,10 +93,23 @@ class RootViewController: UIViewController {
     
     /// 请求位置
     private func requestLocation() {
-        locationManager.delegate = self
+//        locationManager.delegate = self
+//
+//        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+//            locationManager.requestLocation()
+//        } else {
+//            locationManager.requestWhenInUseAuthorization()
+//        }
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            locationManager.requestLocation()
+            locationManager.startUpdatingLocation()
+            locationManager
+                .rx.didUpdateLocations
+                .take(1) // 确保只接收第一个返回的位置, 避免频繁的位置更新导致UI反复刷新
+                .subscribe(onNext: {
+                    self.currentLocation = $0.first
+                })
+                .disposed(by: bag)
         } else {
             locationManager.requestWhenInUseAuthorization()
         }
