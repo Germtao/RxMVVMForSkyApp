@@ -24,6 +24,8 @@ class CurrentWeatherController: WeatherViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var retryBtn: UIButton!
+    
     weak var delegate: CurrentWeatherControllerDelegate?
     
     private var bag = DisposeBag()
@@ -48,16 +50,11 @@ class CurrentWeatherController: WeatherViewController {
         super.viewDidLoad()
 
         // 合并出一个包含weatherVM和locationVM事件值的Observable
-        let viewModel =
+        let combined =
             Observable.combineLatest(locationVM, weatherVM) {
                 return ($0, $1)
             }
-            .filter { // 筛选一下过滤的结果，要求它们的事件值都不为“空”
-                let (location, weather) = $0
-                return !location.isEmpty && !weather.isEmpty
-            }
             .share(replay: 1, scope: .whileConnected)
-            .asDriver(onErrorJustReturn: (CurrentLocationViewModel.empty, CurrentWeatherViewModel.empty))
         /**
          .asDriver 代替 .observeOn
          
@@ -81,6 +78,12 @@ class CurrentWeatherController: WeatherViewController {
 //                self.dateLabel.text = weather.date
 //            }).disposed(by: bag)
         
+        let viewModel = combined
+            .filter { // 筛选一下过滤的结果，要求它们的事件值都不为“空”
+                self.shouldDisplayWeatherContainer(locationVM: $0.0, weatherVM: $0.1)
+            }
+            .asDriver(onErrorJustReturn: (CurrentLocationViewModel.empty, CurrentWeatherViewModel.empty))
+        
         viewModel.map { $0.0.city }
             .drive(locationLabel.rx.text).disposed(by: bag)
         viewModel.map { $0.1.temperature }
@@ -94,10 +97,40 @@ class CurrentWeatherController: WeatherViewController {
         viewModel.map { $0.1.date }
             .drive(dateLabel.rx.text).disposed(by: bag)
         
-        viewModel.map { _ in false }
+        combined.map {
+                self.shouldHideActivityIndicator(locationVM: $0.0, weatherVM: $0.1)
+            }
+            .asDriver(onErrorJustReturn: false)
+            .drive(activityIndicator.rx.isHidden).disposed(by: bag)
+        
+        combined.map {
+            self.shouldAnimateActivityIndicator(locationVM: $0.0, weatherVM: $0.1)
+            }.asDriver(onErrorJustReturn: true)
             .drive(activityIndicator.rx.isAnimating).disposed(by: bag)
-        viewModel.map { _ in false }
+        
+        combined.map {
+                self.shouldHideWeatherContainer(locationVM: $0.0, weatherVM: $0.1)
+            }
+            .asDriver(onErrorJustReturn: true)
             .drive(weatherContainerView.rx.isHidden).disposed(by: bag)
+        
+        
+        let errorCon = combined.map {
+            self.shouldDisplayErrorPrompt(locationVM: $0.0, weatherVM: $0.1)
+        }.asDriver(onErrorJustReturn: true)
+
+        errorCon.map { !$0 }.drive(self.retryBtn.rx.isHidden).disposed(by: bag)
+        errorCon.map { !$0 }.drive(loadingFailedLabel.rx.isHidden).disposed(by: bag)
+        errorCon.map { _ in return "ok" }.drive(loadingFailedLabel.rx.text).disposed(by: bag)
+        
+        // 处理Retry按钮
+        self.retryBtn.rx.tap.subscribe(onNext: { _ in
+            self.weatherVM.accept(.empty)
+            self.locationVM.accept(.empty)
+            
+            (self.parent as? RootViewController)?.fetchCity()
+            (self.parent as? RootViewController)?.fetchWeather()
+        }).disposed(by: bag)
     }
     
     /**
@@ -107,4 +140,27 @@ class CurrentWeatherController: WeatherViewController {
          3. 专注于 Observable 和 .subscribe, 忽略以上两种方式
      */
 
+}
+
+private extension CurrentWeatherController {
+    func shouldDisplayWeatherContainer(locationVM: CurrentLocationViewModel, weatherVM: CurrentWeatherViewModel) -> Bool {
+        return !locationVM.isEmpty && !weatherVM.isEmpty && !locationVM.isInvalid && !weatherVM.isInvalid
+    }
+    
+    func shouldHideWeatherContainer(locationVM: CurrentLocationViewModel, weatherVM: CurrentWeatherViewModel) -> Bool {
+        return locationVM.isEmpty || locationVM.isInvalid || weatherVM.isEmpty || weatherVM.isInvalid
+    }
+    
+    func shouldHideActivityIndicator(locationVM: CurrentLocationViewModel, weatherVM: CurrentWeatherViewModel) -> Bool {
+        return (!locationVM.isEmpty && !weatherVM.isEmpty) || locationVM.isInvalid || weatherVM.isInvalid
+    }
+    
+    func shouldAnimateActivityIndicator(locationVM: CurrentLocationViewModel, weatherVM: CurrentWeatherViewModel) -> Bool {
+        return locationVM.isEmpty || weatherVM.isEmpty
+    }
+    
+    /// 处理错误条件下的交互
+    func shouldDisplayErrorPrompt(locationVM: CurrentLocationViewModel, weatherVM: CurrentWeatherViewModel) -> Bool {
+        return locationVM.isInvalid || weatherVM.isInvalid
+    }
 }

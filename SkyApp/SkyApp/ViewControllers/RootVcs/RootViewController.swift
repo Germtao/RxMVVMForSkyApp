@@ -116,7 +116,7 @@ class RootViewController: UIViewController {
     }
     
     /// 获取天气
-    private func fetchWeather() {
+    func fetchWeather() {
         guard let currentLocation = currentLocation else { return }
         
         let lat = currentLocation.coordinate.latitude
@@ -145,13 +145,14 @@ class RootViewController: UIViewController {
     }
     
     // MARK: - Todo: 获取城市
-    private func fetchCity() {
+    func fetchCity() {
         guard let currentLocation = currentLocation else { return }
         
         // 解析位置名称
         CLGeocoder().reverseGeocodeLocation(currentLocation) { (placemarks, error) in
             if let error = error {
                 dump(error)
+                self.currentWeatherVc.locationVM.accept(.invalid)
             } else if let city = placemarks?.first?.locality {
                 let location = Location(
                     name: city,
@@ -227,6 +228,9 @@ extension RootViewController: SettingsTableViewControllerDelegate {
 
 extension RootViewController: LocationsViewControllerDelegate {
     func controller(_ controller: LocationsViewController, didSelectLocation location: CLLocation) {
+        // 当从LocationViewController返回时, 为了提示用户正在加载新地区的天气
+        self.currentWeatherVc.weatherVM.accept(.empty)
+        self.currentWeatherVc.locationVM.accept(.empty)
         currentLocation = location
     }
 }
