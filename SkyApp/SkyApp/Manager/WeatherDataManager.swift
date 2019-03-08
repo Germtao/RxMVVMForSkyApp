@@ -98,5 +98,6 @@ final class WeatherDataManager {
             decoder.dateDecodingStrategy = .secondsSince1970
             return try decoder.decode(WeatherData.self, from: $0)
         }
+        .catchErrorJustReturn(WeatherData.invalid)
     }
 }

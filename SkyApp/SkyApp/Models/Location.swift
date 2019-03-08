@@ -47,4 +47,6 @@ struct Location: Equatable {
     
     /// 静态成员，让它们表示一个“空的Model”这样的概念, 取代nil未设置
     static let empty = Location(name: "", latitude: 0, longitude: 0)
+    
+    static let invalid = Location(name: "n/a", latitude: 0, longitude: 0)
 }
