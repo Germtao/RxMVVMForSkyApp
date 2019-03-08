@@ -93,11 +93,20 @@ final class WeatherDataManager {
         request.httpMethod = "GET"
         
         // 3. Launch the request
-        return (self.urlSession as! URLSession).rx.data(request: request).map {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .secondsSince1970
-            return try decoder.decode(WeatherData.self, from: $0)
+        return (self.urlSession as! URLSession)
+            .rx
+            .data(request: request).map {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
+                return try decoder.decode(WeatherData.self, from: $0)
+            }
+            .materialize()
+            .do(onNext: { print("Materialize: \($0)") })
+            .dematerialize()
+            .catchError { _ in
+                print("Inconsistant network condition")
+                return Observable.just(WeatherData.invalid)
         }
-        .catchErrorJustReturn(WeatherData.invalid)
+//        .catchErrorJustReturn(WeatherData.invalid)
     }
 }
