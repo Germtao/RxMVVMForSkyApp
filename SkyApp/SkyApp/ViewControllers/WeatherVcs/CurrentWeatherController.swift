@@ -57,7 +57,17 @@ class CurrentWeatherController: WeatherViewController {
                 return !location.isEmpty && !weather.isEmpty
             }
             .share(replay: 1, scope: .whileConnected)
-            .observeOn(MainScheduler.instance) // 确保订阅者在主线程上执行代码
+            .asDriver(onErrorJustReturn: (CurrentLocationViewModel.empty, CurrentWeatherViewModel.empty))
+        /**
+         .asDriver 代替 .observeOn
+         
+         Driver: 它就是一个定制过的 Observable, 拥有以下特性:
+             1. 确保在主线程中订阅, 这样也就保证了事件发生后的订阅代码也一定会在主线程中执行
+             2. 不会发生.error事件, 无需再“订阅”一个Driver的时候, 想着处理错误事件的情况. 正是由于这个约束, asDriver方法有一个 onErrorJustReturn 参数, 要求我们指定发生错误生成的事件.
+                返回了(CurrentLocationViewModel.empty, CurrentWeatherViewModel.empty)), 在任何情况, 都可以用统一的代码来处理用户交互了.
+         */
+        
+//            .observeOn(MainScheduler.instance) // 确保订阅者在主线程上执行代码
 //            .subscribe(onNext: { [unowned self] in
 //                let (location, weather) = $0
 //
@@ -72,22 +82,29 @@ class CurrentWeatherController: WeatherViewController {
 //            }).disposed(by: bag)
         
         viewModel.map { $0.0.city }
-            .bind(to: self.locationLabel.rx.text).disposed(by: bag)
+            .drive(locationLabel.rx.text).disposed(by: bag)
         viewModel.map { $0.1.temperature }
-            .bind(to: temperatureLabel.rx.text).disposed(by: bag)
+            .drive(temperatureLabel.rx.text).disposed(by: bag)
         viewModel.map { $0.1.weatherIcon }
-            .bind(to: weatherIcon.rx.image).disposed(by: bag)
+            .drive(weatherIcon.rx.image).disposed(by: bag)
         viewModel.map { $0.1.humidity }
-            .bind(to: humidityLabel.rx.text).disposed(by: bag)
+            .drive(humidityLabel.rx.text).disposed(by: bag)
         viewModel.map { $0.1.summary }
-            .bind(to: summaryLabel.rx.text).disposed(by: bag)
+            .drive(summaryLabel.rx.text).disposed(by: bag)
         viewModel.map { $0.1.date }
-            .bind(to: dateLabel.rx.text).disposed(by: bag)
+            .drive(dateLabel.rx.text).disposed(by: bag)
         
         viewModel.map { _ in false }
-            .bind(to: activityIndicator.rx.isAnimating).disposed(by: bag)
+            .drive(activityIndicator.rx.isAnimating).disposed(by: bag)
         viewModel.map { _ in false }
-            .bind(to: weatherContainerView.rx.isHidden).disposed(by: bag)
+            .drive(weatherContainerView.rx.isHidden).disposed(by: bag)
     }
+    
+    /**
+     总结:
+         1. .drive - 更加侧重于表达viewModel驱动了某些元素变化这样的概念, 更加侧重于 表达过程
+         2. .bind  - 更侧重于表达把 viewModel 绑定到某些元素, 更侧重于 表达关系
+         3. 专注于 Observable 和 .subscribe, 忽略以上两种方式
+     */
 
 }
