@@ -48,26 +48,46 @@ class CurrentWeatherController: WeatherViewController {
         super.viewDidLoad()
 
         // 合并出一个包含weatherVM和locationVM事件值的Observable
-        Observable.combineLatest(locationVM, weatherVM) {
-            return ($0, $1)
+        let viewModel =
+            Observable.combineLatest(locationVM, weatherVM) {
+                return ($0, $1)
             }
             .filter { // 筛选一下过滤的结果，要求它们的事件值都不为“空”
                 let (location, weather) = $0
                 return !location.isEmpty && !weather.isEmpty
             }
+            .share(replay: 1, scope: .whileConnected)
             .observeOn(MainScheduler.instance) // 确保订阅者在主线程上执行代码
-            .subscribe(onNext: { [unowned self] in
-                let (location, weather) = $0
-                
-                self.weatherContainerView.isHidden = false
-                self.locationLabel.text = location.city
-                
-                self.temperatureLabel.text = weather.temperature
-                self.weatherIcon.image = weather.weatherIcon
-                self.humidityLabel.text = weather.humidity
-                self.summaryLabel.text = weather.summary
-                self.dateLabel.text = weather.date
-            }).disposed(by: bag)
+//            .subscribe(onNext: { [unowned self] in
+//                let (location, weather) = $0
+//
+//                self.weatherContainerView.isHidden = false
+//                self.locationLabel.text = location.city
+//
+//                self.temperatureLabel.text = weather.temperature
+//                self.weatherIcon.image = weather.weatherIcon
+//                self.humidityLabel.text = weather.humidity
+//                self.summaryLabel.text = weather.summary
+//                self.dateLabel.text = weather.date
+//            }).disposed(by: bag)
+        
+        viewModel.map { $0.0.city }
+            .bind(to: self.locationLabel.rx.text).disposed(by: bag)
+        viewModel.map { $0.1.temperature }
+            .bind(to: temperatureLabel.rx.text).disposed(by: bag)
+        viewModel.map { $0.1.weatherIcon }
+            .bind(to: weatherIcon.rx.image).disposed(by: bag)
+        viewModel.map { $0.1.humidity }
+            .bind(to: humidityLabel.rx.text).disposed(by: bag)
+        viewModel.map { $0.1.summary }
+            .bind(to: summaryLabel.rx.text).disposed(by: bag)
+        viewModel.map { $0.1.date }
+            .bind(to: dateLabel.rx.text).disposed(by: bag)
+        
+        viewModel.map { _ in false }
+            .bind(to: activityIndicator.rx.isAnimating).disposed(by: bag)
+        viewModel.map { _ in false }
+            .bind(to: weatherContainerView.rx.isHidden).disposed(by: bag)
     }
 
 }
