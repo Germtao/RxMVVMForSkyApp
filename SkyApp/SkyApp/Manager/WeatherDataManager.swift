@@ -84,6 +84,7 @@ final class WeatherDataManager {
     
     /// 请求天气数据, 变成一个 Observable
     func weatherDataAt(latitude: Double, longitude: Double) -> Observable<WeatherData> {
+        let MAX_ATTEMPTS = 4
         // 1. Concatenate the URL
         let url = baseURL.appendingPathComponent("\(latitude), \(longitude)")
         var request = URLRequest(url: url)
@@ -100,13 +101,28 @@ final class WeatherDataManager {
                 decoder.dateDecodingStrategy = .secondsSince1970
                 return try decoder.decode(WeatherData.self, from: $0)
             }
+            .retryWhen { e in
+                e.enumerated()  // Observable<Error> -> Observable<(Int, Error)>
+                    .flatMap { (attempt, error) -> Observable<Int> in
+                        if attempt >= MAX_ATTEMPTS {
+                            print("------------- \(attempt + 1) attempt -------------")
+                            return Observable.error(error)
+                        } else {
+                            print("-------- \(attempt + 1) Retry --------")
+                            return Observable<Int>.timer(Double(attempt + 1),  // 事件生成的间隔
+                                                         scheduler: MainScheduler.instance).take(1)
+                        }
+                    }
+
+            }
+//            .retry()  // 无脑重试
+//            .retry(3) // 指定次数重试
+//            .catchError { _ in
+//                print("Inconsistant network condition")
+//                return Observable.just(WeatherData.invalid) }
             .materialize()
-            .do(onNext: { print("Materialize: \($0)") })
+            .do(onNext: { print("===== Materialize: \($0) ======0") })
             .dematerialize()
-            .catchError { _ in
-                print("Inconsistant network condition")
-                return Observable.just(WeatherData.invalid)
-        }
-//        .catchErrorJustReturn(WeatherData.invalid)
+            .catchErrorJustReturn(WeatherData.invalid)
     }
 }
